@@ -1,0 +1,38 @@
+var temp=0;
+const cToF = (celcius) => {
+    var celciusToFahrenheit = 32+((celcius*9)/5);
+    console.log(celciusToFahrenheit);
+    temp = temp+celciusToFahrenheit;
+}
+
+const fToC = (fahrenheit) => {
+    var fahrenheitToCelcius = ((fahrenheit-32)*5)/9;
+    console.log(fahrenheitToCelcius);
+    temp = temp+fahrenheitToCelcius;
+}
+
+const cToK = (celcius) => {
+    var celciusToKelvin = celcius+273;
+    console.log(celciusToKelvin);
+    temp = temp+celciusToKelvin;
+}
+
+const fToK = (fahrenheit) => {
+    var fahrenheitToKelvin = ((fahrenheit-32)*5)/9 + 273;
+    console.log(fahrenheitToKelvin);
+    temp = temp+fahrenheitToKelvin;
+}
+
+const avg = () => {
+    var avgTemp = Math.round((temp)/4);
+    console.log(avgTemp);
+}
+    
+
+
+cToF(0);
+fToC(212);
+cToK(27);
+fToK(50);
+avg();
+
