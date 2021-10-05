@@ -1,0 +1,9 @@
+class convert 
+{
+ void display(int h)
+ {
+  int d=h/24
+  h=h%24;
+  System.out.println(d+"days and"+h"hours");
+ }
+}
