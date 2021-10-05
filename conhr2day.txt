@@ -1,0 +1,8 @@
+class cohrtoday
+{
+ void display(int d)
+ {
+  int h=d*24;
+  System.out.println("hours ="+h);
+ }
+}
