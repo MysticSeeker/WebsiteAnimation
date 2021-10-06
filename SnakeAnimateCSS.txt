@@ -1,0 +1,90 @@
+$font-family:                 'Open Sans', sans-serif;
+$font-size:                   calc(1em + 1vw);
+
+$color-body:                  #e2e2e2;
+$color-text:                  #282828;
+$color-section:               #47c8e2;
+
+$variable-size-of-section:    3em;
+
+$variable-animation-time:     1s;
+$variable-animation-function: cubic-bezier(.42, 0, .58, 1);
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+  margin:     0;
+  padding:    0;
+}
+
+body {
+  font-family:      $font-family;
+  font-size:        $font-size;
+  background-color: $color-body;
+}
+
+.snake__block {
+  position: absolute;
+  top: 25vh;
+  left: 60vw;
+  width: $variable-size-of-section * 1.65;
+  height: $variable-size-of-section * 1.65;
+  
+  transform-style: preserve-3d;
+  transform:  rotateX(70deg)
+              rotateY(-8deg)
+              rotateZ(40deg);
+}
+
+.snake__section,
+.snake__section:after,
+.snake__section:before {
+  position: absolute;
+  content: '';
+  height: $variable-size-of-section;
+  width: $variable-size-of-section;
+  float: left;
+}
+
+.snake__section {
+  position: relative;
+  background-color: $color-section;
+  box-shadow: 18em 18em 5.5em rgba($color-text, .1);
+  
+  transform-style: preserve-3d;
+  transform:  translateX($variable-size-of-section)
+              translateY(.1em);
+  
+  animation: moveAnimation $variable-animation-time $variable-animation-function infinite;
+  
+  &:after {
+    background-color: darken($color-section, 15%);
+    transform-origin: 100% 100%;
+    transform:  rotateX(-90deg)
+                translateY($variable-size-of-section);
+  }
+  
+  &:before {
+    background-color: darken($color-section, 25%);
+    transform-origin: 100% 0;
+    transform:  rotateY(90deg)
+                translateX($variable-size-of-section);
+  }
+  
+  @for $i from 1 to 11 {
+    
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * .15s};
+    }
+  }
+}
+
+/**
+ *	Animations
+ */
+@keyframes moveAnimation {
+  50% {
+    transform: translateZ(1em);
+  }
+}
